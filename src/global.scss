@@ -1,0 +1,45 @@
+// http://ionicframework.com/docs/theming/
+@import '~@ionic/angular/css/core.css';
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+@import '~@ionic/angular/css/display.css';
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+
+ion-tab-bar{
+    --ion-tab-bar-background: -webkit-gradient(linear,0% 0%,0% 100%,from(#7c69f4),to(#5546f2));//changes tab-bar background color globally
+}
+
+ion-toolbar{
+    --ion-toolbar-background:-webkit-gradient(linear,0% 0%,0% 100%,from(#7c69f4),to(#5546f2));//changes background color of toolbar
+    color: #fff;
+}
+
+ion-tab-button{
+    ion-label{
+        color:#fff;
+        font-size: 16px;
+    }
+}
+
+ion-tab-button{
+    color: #fff; //change icon color in tabs
+}
+
+ion-tab-button[aria-selected=true]{
+    color: #000; //change icon color for selected tab
+}
+
+ion-item{
+    --ion-item-border-color:blue;
+}
+
+.alert-radio-label{
+    text-overflow: initial !important;
+    white-space: initial !important;
+    overflow: initial !important;
+}

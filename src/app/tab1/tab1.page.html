@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Calculadora
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<div id="result-form">
+  <div class="results" >
+    <ion-input type="text" placeholder="0" name="display" [(ngModel)]="result" padding></ion-input>
+  </div>
+</div>
+
+<div id="numbers">
+  <div class="row">
+    <button class="number clear" (click)="clickButton('C')">AC</button>
+    <button class="number clear" (click)="clickButton('R')">CE</button>
+    <button class="number" (click)="clickButton('%')">%</button>
+    <button class="number" (click)="clickButton('/')">/</button>
+  </div>
+  <div class="row">
+    <button class="number" (click)="clickButton('7')">7</button>
+    <button class="number" (click)="clickButton('8')">8</button>
+    <button class="number" (click)="clickButton('9')">9</button>
+    <button class="number operators" (click)="clickButton('*')">X</button>
+  </div>
+  <div class="row">
+    <button class="number" (click)="clickButton('4')">4</button>
+    <button class="number" (click)="clickButton('5')">5</button>
+    <button class="number" (click)="clickButton('6')">6</button>
+    <button class="number" (click)="clickButton('-')">-</button>
+  </div>
+  <div class="row">
+    <button class="number" (click)="clickButton('1')">1</button>
+    <button class="number" (click)="clickButton('2')">2</button>
+    <button class="number" (click)="clickButton('3')">3</button>
+    <button class="number" (click)="clickButton('+')">+</button>
+  </div>
+  <div class="row">
+    <button class="number" (click)="clickButton('0')">0</button>
+    <button class="number" (click)="clickButton('.')">.</button>
+    <button id="calculation" class="number" (click)="clickButton('=')">=</button>
+  </div>
+
+</div>
+
+</ion-content>

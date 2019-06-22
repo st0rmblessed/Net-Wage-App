@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Salário Líquido
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div id="wrapper">
+
+    <ion-segment [(ngModel)]="display" (ngModelChange)="getValue()">
+      <ion-segment-button value="anual">
+        <ion-label>Anual</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="mensal">
+        <ion-label>Mensal</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <div id="result-container">
+      <div id="result-label"> Salário Líquido</div>
+      <div id="result-value">{{ result | number:'1.2-2'}} €</div>
+    </div>
+
+    <div id="input-container">
+      <div class="input-item">
+        <div class="field-label">Salário Anual Bruto</div>
+        <input type="number" [(ngModel)]="wageInput" (ngModelChange)="getValue()" />
+      </div>
+      <div class="input-item">
+        <div class="field-label">Subsídio de Almoço Diário</div>
+        <input type="number" [(ngModel)]="foodSubsidy" (ngModelChange)="getValue()" />
+      </div>
+      <div class="input-item">
+        <div class="field-label">Nº de Dias</div>
+        <input type="number" [(ngModel)]="days" (ngModelChange)="getValue()" />
+      </div>
+      <div id="dropdowns-container">
+        <ion-label> Sector</ion-label>
+        <ion-select padding placeholder="Sector" (change)="selectOption($event.target.value)"
+          [(ngModel)]="sectorSelected" (ngModelChange)="getValue()">
+          <ion-select-option [value]="sector.id" *ngFor="let sector of sectors">{{sector.name}}</ion-select-option>
+        </ion-select>
+        <ion-label> Dependentes</ion-label>
+        <ion-select padding placeholder="Dependentes" (change)="selectOption($event.target.value)"
+          [(ngModel)]="dependentsSelected" (ngModelChange)="getValue()">
+          <ion-select-option [value]="dependent.id" *ngFor="let dependent of dependents">{{dependent.name}}
+          </ion-select-option>
+        </ion-select>
+        <ion-label> Cartão de Refeição</ion-label>
+        <ion-select padding placeholder="Cartão de Refeição" (change)="selectOption($event.target.value)"
+          [(ngModel)]="foodCardSelected" (ngModelChange)="getValue()">
+          <ion-select-option [value]="selection.id" *ngFor="let selection of foodCard">{{selection.name}}
+          </ion-select-option>
+        </ion-select>
+        <ion-label> Situação Conjugal</ion-label>
+        <ion-select padding placeholder="Situação Conjugal" (change)="selectOption($event.target.value)"
+          [(ngModel)]="maritalSituationSelected" (ngModelChange)="getValue()">
+          <ion-select-option [value]="selection.id" *ngFor="let selection of maritalSituation">{{selection.name}}
+          </ion-select-option>
+        </ion-select>
+      </div>
+    </div>
+
+    <ion-item>
+      <ion-label>Mostrar Detalhe</ion-label>
+      <ion-toggle [(ngModel)]="details"></ion-toggle>
+    </ion-item>
+
+    <div *ngIf="details" id="details-container">
+      <div class="item">
+        <span>Segurança Social ({{ segurancaSocialTaxa }} %)</span>
+        <span>{{ segurancaSocial | number:'1.2-2' }} €</span>
+      </div>
+      <div class="item">
+        <span>IRS ({{ tax }}%)</span>
+        <span> {{ irs | number:'1.2-2' }} €</span>
+      </div>
+      <div *ngIf="sectorSelected == '0'" class="item">
+        <span>ADSE ({{ adseTaxa }}%)</span>
+        <span> {{ adse | number:'1.2-2' }} €</span>
+      </div>
+
+
+    </div>
+
+  </div>
+</ion-content>
